@@ -1,0 +1,45 @@
+@{
+  ViewData["Title"] = "Expenses";
+}
+
+@model List<Expense>
+
+<div class="text-center">
+    <h1 class="display-4">Expenses</h1>
+    <br/>
+    <hr />
+    <h3>Total expenses $@ViewBag.Expenses</h3>
+    <br />
+    <table class="table">
+      <thead>
+        <tr>
+            <th>Id</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (Model.Count == 0)
+        {
+          <tr>
+            <td colspan="3">No expenses found</td>
+          </tr>
+        }
+        else
+        {  
+          @foreach (var expense in Model)
+          {
+            <tr>
+              <td>@expense.Id</td>
+              <td>@expense.Amount</td>
+              <td>@expense.Description</td>
+              <td>
+                <a asp-controller="Home" asp-action="CreateEditExpense" asp-route-id="@expense.Id" class="btn btn-primary">Edit</a>
+                <a asp-controller="Home" asp-action="DeleteExpenseItem" asp-route-id="@expense.Id" class="btn btn-danger">Delete</a>
+            </tr>
+          }
+        }
+      </tbody>
+    </table>
+</div>
