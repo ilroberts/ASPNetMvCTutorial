@@ -2,20 +2,36 @@
     ViewData["Title"] = "Create / Edit Expense";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Create or edit an expense</h1>
+<div class="text-center py-6">
+    <h1 class="text-4xl font-bold">Create or Edit an Expense</h1>
 </div>
 
 @model SpendSmart.Web.Models.Expense
 
-<form asp-action="CreateEditExpenseForm" asp-asp-controller="Home">
-  <input hidden asp-for="Id" class="form-control" type="number" placeholder="0" />
-  
-  <label class="mt-4">Value </label>
-  <input asp-for="Amount" class="form-control" type="number" placeholder="0" step="0.01"/>
-  
-  <label class="mt-4">Description</label>
-  <input asp-for="Description" class="form-control" type="text" placeholder="Add a description" step="0.01"/>
+<div class="max-w-lg mx-auto">
+    <form asp-action="CreateEditExpenseForm" asp-controller="Home" class="space-y-6">
+        <!-- Hidden ID field -->
+        <input hidden asp-for="Id" class="input input-bordered" type="number" />
 
-  <button type="submit" class="btn btn-primary mt-4">Submit</button>
-</form>
+        <!-- Amount field -->
+        <div class="form-control mb-2">
+            <label class="label">
+                <span class="label-text font-semibold">Value</span>
+            </label>
+            <input asp-for="Amount" class="input input-bordered bg-white border border-grey-300" type="number" placeholder="0" step="0.01" />
+        </div>
+
+        <!-- Description field -->
+        <div class="form-control mb-2">
+            <label class="label">
+                <span class="label-text font-semibold">Description</span>
+            </label>
+            <input asp-for="Description" class="input input-bordered bg-white border border-grey-300" type="text" placeholder="Add a description" />
+        </div>
+
+        <!-- Submit button -->
+        <div class="form-control mt-4">
+            <button type="submit" class="btn btn-primary w-full">Submit</button>
+        </div>
+    </form>
+</div>

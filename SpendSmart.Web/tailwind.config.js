@@ -2,12 +2,18 @@
 module.exports = {
   content: [
       './Views/**/*.cshtml',
-      './Views/Shared/**/*.cshtml',
       './wwwroot/**/*.html'
   ],
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+    daisyui: {
+        themes: [
+            "light",
+            "dark",
+            "corporate"
+        ],
+    },
 }
 

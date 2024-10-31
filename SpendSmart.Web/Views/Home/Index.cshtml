@@ -2,12 +2,21 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="bg-blue-700 display-4">Welcome</h1>
-    <a asp-controller="Home" asp-action="Expenses" class="btn btn-primary">Overview</a>
-    <a asp-controller="Home" asp-action="CreateEditExpense" class="btn btn-secondary">Create new</a>
+<div class="min-h-screen bg-base-100">
+    <!-- Hero Section using DaisyUI -->
+    <div class="hero min-h-[60vh] bg-base-200">
+        <div class="hero-content text-center">
+            <div class="max-w-md">
+                <h1 class="text-5xl font-bold">SpendSmart</h1>
+                <p class="py-6">Track expenses, monitor spending patterns, and achieve your financial goals with SpendSmart's intuitive expense management tools.</p>
+                <div class="space-x-2">
+                    <a asp-controller="Home" asp-action="Expenses" class="btn btn-primary">View Overview</a>
+                    <a asp-controller="Home" asp-action="CreateEditExpense" class="btn btn-ghost">Add Expense</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="bg-blue-500 text-black font-bold p-4 rounded-lg">
-    Tailwind CSS is working!
-</div>
+
+
 
