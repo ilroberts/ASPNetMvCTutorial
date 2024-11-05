@@ -50,7 +50,7 @@ public class HomeController : Controller
         return RedirectToAction("Expenses");
     }
 
-    public IActionResult CreateEditExpenseForm(Expense model)
+    public IActionResult CreateEditExpenseForm(ExpenseViewModel model)
     {
 
         if (model.Id != 0)
@@ -59,11 +59,19 @@ public class HomeController : Controller
             expense.Description = model.Description;
             expense.Amount = model.Amount;
             expense.Date = model.Date;
+            expense.Category = model.Category;
             _context.Expenses.Update(expense);
         }
         else
         {
-            _context.Expenses.Add(model);
+            var expense = new Expense
+            {
+                Description = model.Description,
+                Amount = model.Amount,
+                Date = model.Date,
+                Category = model.Category
+            };
+            _context.Expenses.Add(expense);
         }
         _context.SaveChanges();
         return RedirectToAction("Expenses");
