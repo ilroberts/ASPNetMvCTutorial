@@ -12,7 +12,7 @@ namespace SpendSmart.Web.Models
     Rent = 2,
     [Description("Utilities")]
     Utilities = 3,
-    [Description("Transportation")]
+    [Description("Travel")]
     Transportation = 4,
     [Description("Entertainment")]
     Entertainment = 5,

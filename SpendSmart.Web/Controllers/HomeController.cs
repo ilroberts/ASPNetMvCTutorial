@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using SpendSmart.Web.Models;
+using SpendSmart.Web.Models.Helpers;
 using SpendSmart.Web.Persistence;
 
 namespace SpendSmart.Web.Controllers;
@@ -30,16 +31,28 @@ public class HomeController : Controller
 
         return View(allExpenses);
     }
-
-
+    
     public IActionResult CreateEditExpense(int? id)
     {
         if (id != null)
         {
             var expense = _context.Expenses.SingleOrDefault(e => e.Id == id);
-            return View(expense);
+            var model = new ExpenseViewModel
+            {
+                Id = expense.Id,
+                Description = expense.Description,
+                Amount = expense.Amount,
+                Date = expense.Date,
+                Category = expense.Category,
+                ExpenseCategories = EnumExtensions.GetEnumSelectListWithDescriptions<ExpenseCategory>()
+            };
+            return View(model);
         }
-        return View();
+        var viewModel = new ExpenseViewModel
+        {
+            ExpenseCategories = EnumExtensions.GetEnumSelectListWithDescriptions<ExpenseCategory>()
+        };
+        return View(viewModel);
     }
 
     public IActionResult DeleteExpenseItem(int id)
@@ -49,7 +62,7 @@ public class HomeController : Controller
         _context.SaveChanges();
         return RedirectToAction("Expenses");
     }
-
+    
     public IActionResult CreateEditExpenseForm(ExpenseViewModel model)
     {
 

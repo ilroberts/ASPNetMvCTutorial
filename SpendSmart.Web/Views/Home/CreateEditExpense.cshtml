@@ -6,7 +6,7 @@
     <h1 class="text-4xl font-bold">Create or Edit an Expense</h1>
 </div>
 
-@model SpendSmart.Web.Models.Expense
+@model SpendSmart.Web.Models.ExpenseViewModel
 
 <div class="max-w-lg mx-auto">
     <form asp-action="CreateEditExpenseForm" asp-controller="Home" class="space-y-6">
@@ -34,7 +34,7 @@
             <label class="label">
                 <span class="label-text font-semibold text-gray-700">Expense Category</span>
             </label>
-            <select asp-for="Category" asp-items="Html.GetEnumSelectList<ExpenseCategory>()"
+            <select asp-for="Category" asp-items="Model.ExpenseCategories"
                     class="select select-primary w-full max-w-xs p-2 rounded-md bg-white text-gray-800 border border-gray-300 hover:border-blue-500 focus:ring focus:ring-blue-500 focus:border-blue-500">
                 <option value="" disabled selected>Select expense type</option>
             </select>
